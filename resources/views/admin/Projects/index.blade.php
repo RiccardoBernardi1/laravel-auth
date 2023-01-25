@@ -19,9 +19,12 @@
                 <td>{{$project->name}}</td>
                 <td>{{$project->description}}</td>
                 <td>{{$project->client}}</td>
-                <td><a href="{{route('admin.projects.show',$project->slug)}}" class="btn btn-primary">Details</a></td>
+                <td>
+                    <a href="{{route('admin.projects.show',$project->slug)}}" class="btn btn-primary">Details</a>
+                </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+<a href="{{route('admin.projects.create')}}" class="btn btn-success">Create a New Project</a>
 @endsection
