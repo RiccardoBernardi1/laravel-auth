@@ -83,7 +83,7 @@ class ProjectController extends Controller
         $data=$request->validated();
         $data['slug'] = Str::slug($data['name'],'-');
         $project->update($data);
-        return redirect()->route('comics.index');
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -94,6 +94,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }

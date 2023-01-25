@@ -19,7 +19,7 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label for="costumer" class="form-label">Project Title</label>
+        <label for="costumer" class="form-label">Costumer</label>
         <input class="form-control @error('client') is-invalid @enderror" type="text" placeholder="costumer" id="costumer" name="client" value="{{old('client')}}" required>
         @error('client')
             <div class="alert alert-danger">{{ $message }}</div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="my-4">Edit Project: {{$project[0]->name}}</h1>
-<form action="{{route('admin.projects.update',$project[0]->slug)}}" method="POST">
+<form action="{{route('admin.projects.update',$project[0])}}" method="POST">
     @csrf
     @method('PUT')
     <div class="mb-3">
