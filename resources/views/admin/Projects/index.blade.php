@@ -9,7 +9,9 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Customer</th>
-            <th scope="col">Azioni</th>
+            <th scope="col">Details</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +23,11 @@
                 <td>{{$project->client}}</td>
                 <td>
                     <a href="{{route('admin.projects.show',$project->slug)}}" class="btn btn-primary">Details</a>
+                </td>
+                <td>
                     <a href="{{route('admin.projects.edit',$project->slug)}}" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{$project->id}}">Delete</button>
                 </td>
             </tr>
