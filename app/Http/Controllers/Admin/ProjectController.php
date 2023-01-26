@@ -40,9 +40,9 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data=$request->validated();
-        $data['slug'] = Str::slug($data['name'],'-');
         $new_project= new Project();
         $new_project->fill($data);
+        $new_project->slug=Str::slug($new_project->name,'-');
         $new_project->save();
         return redirect()->route('admin.projects.show',$new_project->slug);
     }
@@ -53,9 +53,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Project $project)
     {
-        $project=Project::where('slug',$slug)->get();
         return view('admin.projects.show',compact('project'));
     }
 
@@ -65,9 +64,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(Project $project)
     {
-        $project=Project::where('slug',$slug)->get();
         return view('admin.projects.edit',compact('project'));
     }
 
@@ -83,7 +81,7 @@ class ProjectController extends Controller
         $data=$request->validated();
         $data['slug'] = Str::slug($data['name'],'-');
         $project->update($data);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects         .index');
     }
 
     /**
