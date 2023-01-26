@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $new_project->fill($data);
         $new_project->slug=Str::slug($new_project->name,'-');
         $new_project->save();
-        return redirect()->route('admin.projects.show',$new_project->slug);
+        return redirect()->route('admin.projects.index')->with('message',"The project '$new_project->names'");
     }
 
     /**
@@ -78,10 +78,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $old_name=$project->name;
         $data=$request->validated();
         $project->slug = Str::slug($data['name'],'-');
         $project->update($data);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message',"The project '$old_name' has been updated.");
     }
 
     /**
@@ -92,7 +93,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $old_name=$project->name;
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message',"The project '$old_name' has been deleted.");
     }
 }

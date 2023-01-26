@@ -29,7 +29,7 @@ class UpdateProjectRequest extends FormRequest
                 'required',
                 'string',
                 'between:5,150',
-                Rule::unique('projects')->ignore($this->projects),
+                Rule::unique('projects')->ignore($this->project),
             ],
             'description' => 'required|string',
             'client' => 'required|string|between:5,150'
