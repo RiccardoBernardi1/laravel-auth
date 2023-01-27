@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="my-4">Create a New Project</h1>
-<form action="{{route('admin.projects.store')}}" method="POST">
+<form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="name" class="form-label">Project Name</label>
@@ -22,6 +22,13 @@
         <label for="costumer" class="form-label">Costumer</label>
         <input class="form-control @error('client') is-invalid @enderror" type="text" placeholder="costumer" id="costumer" name="client" value="{{old('client')}}" required>
         @error('client')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="mb-3">
+        <label for="cover_image" class="form-label">cover_image</label>
+        <input class="form-control @error('cover_image') is-invalid @enderror" type="file" placeholder="cover_image" id="cover_image" name="cover_image" value="{{old('cover_image')}}">
+        @error('cover_image')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>

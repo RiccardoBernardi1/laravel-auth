@@ -32,7 +32,8 @@ class UpdateProjectRequest extends FormRequest
                 Rule::unique('projects')->ignore($this->project),
             ],
             'description' => 'required|string',
-            'client' => 'required|string|between:5,150'
+            'client' => 'required|string|between:5,150',
+            'cover_image'=> 'nullable|image|max:2048'
         ];
     }
 }
